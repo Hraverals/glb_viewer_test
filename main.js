@@ -77,6 +77,7 @@ function fitCameraToObject(cam, object, offset = 1.25, orbitControls) {
   }
 }
 
+// 애니메이션 루프
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
