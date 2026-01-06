@@ -5,6 +5,13 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 const status = document.getElementById("status");
 
 const scene = new THREE.Scene();
+// 어두운 오브젝트가 잘 보이도록 하기
+const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambient);
+
+const dir = new THREE.DirectionalLight(0xffffff, 1.0);
+dir.position.set(5, 10, 7);
+scene.add(dir);
 
 const camera = new THREE.PerspectiveCamera(
     50,                                     // 시야각
@@ -15,6 +22,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 1.5, 3);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true }); // antialias 없으니까 내 gpu가 힘들어함
+renderer.setClearColor(0xeeeeee, 1);                           // 배경 하얗게 바꾸기
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
