@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { TransformControls } from "three/examples/jsm/controls/TransformControls.js";
 
 export function initFurnitureSystem(scene, camera, renderer, controls) {
-    // 1. TransformControls 설정
+    // TransformControls 설정
     const transformControls = new TransformControls(camera, renderer.domElement);
     scene.add(transformControls);
 
@@ -11,11 +11,11 @@ export function initFurnitureSystem(scene, camera, renderer, controls) {
         controls.enabled = !event.value;
     });
 
-    // 2. Raycaster 설정
+    // Raycaster 설정
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    // 3. 더블 클릭 이벤트 리스너: 가구 생성
+    // 더블 클릭 이벤트 리스너: 가구 생성
     window.addEventListener("dblclick", (event) => {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -37,7 +37,6 @@ export function initFurnitureSystem(scene, camera, renderer, controls) {
         }
     });
 
-    // 4. 키보드 단축키 설정 (모드 변경)
     window.addEventListener("keydown", (event) => {
         switch (event.key.toLowerCase()) {
             case "w": // 이동 모드
@@ -76,6 +75,5 @@ function createFurniture(point, scene, transformControls) {
 
     scene.add(furniture);
 
-    // 생성 즉시 조작기 부착 (기본 모드는 translate)
     transformControls.attach(furniture);
 }
